@@ -30,7 +30,7 @@ def report_parsing(text: str) -> Tuple[IoCIdentifier, Doc]:
     """
 
     :param text: input text
-    :return: Bang
+    :return:     Bang
     """
     iid = ioc_protection(text)
     text_without_ioc = iid.replaced_text
@@ -43,11 +43,11 @@ def report_parsing(text: str) -> Tuple[IoCIdentifier, Doc]:
 def attackGraph_generating(text: str, output: str = None, edge_type='parsing', srl=None) -> AttackGraph:
     """ Generate Attack Graph.
 
-    :param text: input text
-    :param output: output filename
-    :param edge_type: 'parsing' = Dependency Parsing, 'srl' = Semantic Role Labeling
-    :param srl: Semantic role labeling model, None if in edge_type='parsing'
-    :return: Attack Graph
+    :param text:        input text
+    :param output:      output filename
+    :param edge_type:   'parsing' = Dependency Parsing, 'srl' = Semantic Role Labeling
+    :param srl:         Semantic role labeling model, None if in edge_type='parsing'
+    :return:            Attack Graph
     """
     text = text.lower()
     iid, doc = report_parsing(text)
@@ -64,12 +64,12 @@ def attackGraph_generating(text: str, output: str = None, edge_type='parsing', s
 def techniqueTemplate_generating(output_path: str = None, technique_list: List[str] = None, level: str = 'technique', edge_type='parsing', log_path: str = None) -> None:
     """ Generate Technique Template Database.
 
-    :param output_path: output directory
-    :param technique_list: list of techniques you want to generate
-    :param level: 'technique', 'sub_technique', 'procedure1', 'procedure2'
-    :param edge_type: 'parsing' = Dependency Parsing, 'srl' = Semantic Role Labeling
-    :param log_path: log file's path
-    :return: None
+    :param output_path:     output directory
+    :param technique_list:  list of techniques you want to generate
+    :param level:           'technique', 'sub_technique', 'procedure1', 'procedure2'
+    :param edge_type:       'parsing' = Dependency Parsing, 'srl' = Semantic Role Labeling
+    :param log_path:        log file's path
+    :return:                None
     """
     # AllenNLP pre-trained srl-bert
     if edge_type == 'srl':
@@ -149,13 +149,13 @@ def techniqueTemplate_generating(output_path: str = None, technique_list: List[s
 def techniqueTemplate_generating_perTech(technique_name: str, technique_samples: List[str], output_path: str = None, edge_type='parsing', srl=None, log_path: str = None) -> None:
     """ Combine all procedure examples in technique_samples into single Technique Template.
 
-    :param technique_name: technique's name
-    :param technique_samples: list of procedure examples
-    :param output_path: output directory
-    :param edge_type: 'parsing' = Dependency parsing, 'srl' = Semantic Role Labeling
-    :param srl: Semantic role labeling model, None if in edge_type='parsing'
-    :param log_path: log file's path
-    :return: None
+    :param technique_name:      technique's name
+    :param technique_samples:   list of procedure examples
+    :param output_path:         output directory
+    :param edge_type:           'parsing' = Dependency parsing, 'srl' = Semantic Role Labeling
+    :param srl:                 Semantic role labeling model, None if in edge_type='parsing'
+    :param log_path:            log file's path
+    :return:                    None
     """
     technique_template = TechniqueTemplate(technique_name)
 
@@ -178,12 +178,12 @@ def techniqueTemplate_generating_perTech(technique_name: str, technique_samples:
 def techniqueTemplate_generating_perExample(technique_name: str, technique_samples: List[str], output_path: str = None, edge_type='parsing', srl=None, log_path: str = None) -> None:
     """ Combine similar examples in technique_samples into same Technique Template.
 
-    :param technique_name: technique's name
-    :param technique_samples: list of procedure examples
-    :param output_path: output directory
-    :param edge_type: 'parsing' = Dependency parsing, 'srl' = Semantic Role Labeling
-    :param srl: Semantic role labeling model, None if in edge_type='parsing'
-    :param log_path: log file's path
+    :param technique_name:      technique's name
+    :param technique_samples:   list of procedure examples
+    :param output_path:         output directory
+    :param edge_type:           'parsing' = Dependency parsing, 'srl' = Semantic Role Labeling
+    :param srl:                 Semantic role labeling model, None if in edge_type='parsing'
+    :param log_path:            log file's path
     :return: None
     """
     if not os.path.exists(output_path):
@@ -246,13 +246,13 @@ def techniqueTemplate_generating_perExample(technique_name: str, technique_sampl
 def technique_identifying(text: str, technique_list: List[str], template_path: str, output_file: str = "output", edge_type='parsing', level='technique') -> AttackMatcher:
     """ Identify the possible technique in input text, considering only the techniques in input technique_list.
 
-    :param text: text waiting for identification
-    :param technique_list: list of techniques you want to used
-    :param template_path: template's path
-    :param output_file: output filename
-    :param edge_type: 'parsing' = Dependency Parsing, 'srl' = Semantic Role Labeling
-    :param level: 'technique', 'sub_technique', 'procedure1', 'procedure2'
-    :return: AttackMatcher
+    :param text:            text waiting for identification
+    :param technique_list:  list of techniques you want to used
+    :param template_path:   template's path
+    :param output_file:     output filename
+    :param edge_type:       'parsing' = Dependency Parsing, 'srl' = Semantic Role Labeling
+    :param level:           'technique', 'sub_technique', 'procedure1', 'procedure2'
+    :return:                AttackMatcher
     """
     if edge_type == 'srl':
         srl = load_predictor('structured-prediction-srl-bert')
@@ -270,10 +270,10 @@ def technique_identifying(text: str, technique_list: List[str], template_path: s
 def technique_identifying_forAttackGraph(graph: AttackGraph, template_list: List[TechniqueTemplate], output_file: str) -> AttackMatcher:
     """
 
-    :param graph: attack graph waiting for identification
-    :param template_list: list of technique template
-    :param output_file: output filename
-    :return:
+    :param graph:           attack graph waiting for identification
+    :param template_list:   list of technique template
+    :param output_file:     output filename
+    :return:                AttackMatcher
     """
     attackMatcher = AttackMatcher(graph)
     for template in template_list:
@@ -287,10 +287,10 @@ def technique_identifying_forAttackGraph(graph: AttackGraph, template_list: List
 def load_techniqueTemplate_fromFils(technique_path, tt_list, level='technique'):
     """ Load Technique Template from template_path, considering only techniques in tt_list.
 
-    :param technique_path: path of Technique Templates to be loaded
-    :param tt_list: list of techniques you want to load
-    :param level: 'technique', 'sub_technique', 'procedure1', 'procedure2'
-    :return: loaded Technique Template list
+    :param technique_path:  path of Technique Templates to be loaded
+    :param tt_list:         list of techniques you want to load
+    :param level:           'technique', 'sub_technique', 'procedure1', 'procedure2'
+    :return:                loaded Technique Template list
     """
     template_list = []
 
@@ -317,7 +317,7 @@ def TechIdentifyJson(filepath) -> List[str]:
     """ Print out formatted technique identification result.
 
     :param filepath: input technique_identification result json file
-    :return: a list of techniques appeared in input file
+    :return:         a list of techniques appeared in input file
     """
     with open(filepath, 'r') as fp:
         j = json.load(fp)
@@ -350,7 +350,7 @@ def drawTechniqueTemplate(template_path) -> None:
     """ Draw all Technique Templates in template_path.
 
     :param template_path: path of Techniqute Templates
-    :return: None
+    :return:              None
     """
     for template in os.listdir(template_path):
         if template.endswith(".json") and not os.path.exists(os.path.join(template_path, template.replace(".json", ".png"))):
@@ -379,9 +379,9 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     # Examples:
-    # python main.py -M attackGraph -O ./output -R Dataset/Evaluation/Frankenstein Campaign.txt --edgeType parsing
-    # python main.py -M techniqueTemplate -O Template/Technique_level --edgeType parsing --techGenLevel technique
-    # python main.py -M techniqueIdentify -O ./output -R Dataset/Evaluation/Frankenstein Campaign.txt -T Template/Technique_level --edgeType parsing --techGenLevel technique
+    # python daniel.py -M attackGraph -O ./output -R Dataset/Evaluation/Frankenstein Campaign.txt --edgeType parsing
+    # python daniel.py -M techniqueTemplate -O Template/Technique_level --edgeType parsing --techGenLevel technique
+    # python daniel.py -M techniqueIdentify -O ./output -R Dataset/Evaluation/Frankenstein Campaign.txt -T Template/Technique_level --edgeType parsing --techGenLevel technique
     parser.add_argument('-M', '--mode', required=True, type=str, default="", help="The running mode options: 'attackGraph', 'techniqueTemplate', 'techniqueIdentify'")
     parser.add_argument('-O', '--outputPath', required=True, type=str, default="", help="Output file's path.")
     parser.add_argument('-L', '--logPath', required=False, type=str, default=None, help="Log file's path.")

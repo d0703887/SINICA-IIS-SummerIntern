@@ -56,4 +56,13 @@ Generate Technique Template at following corresponding directory (**recommended,
 }
 ```
 
+```bibtex
+@misc{
+    title      = {Knowledge-enhanced-Attack-Graph},
+    author     = {LI Zhenyuan, Sean S. Chen},
+    url        = {https://github.com/li-zhenyuan/Knowledge-enhanced-Attack-Graph},
+    year       = {2022}
+}
+```
+
 
