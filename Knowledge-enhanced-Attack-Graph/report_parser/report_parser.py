@@ -55,6 +55,10 @@ class IoCNer:
     }
 
     def __init__(self, model_location=None):
+        """ Init/Load the spacy model which responsible for Named Entity Recognition, coreferee and other Natural Language Preprocessing.
+
+        :param model_location: path of model's weight, default = "Knowledge-enhanced-Attack-Graph/new_cti.model"
+        """
         self.model_location = model_location
 
         if self.model_location is None:
@@ -64,7 +68,7 @@ class IoCNer:
             self.nlp = spacy.load(self.model_location)
             #logging.info("---Load Model: %s!---" % self.model_location)
 
-        self.nlp.max_length = 1245508 + 1
+        self.nlp.max_length = 3000000
         # self.report_parser.max_length = 3000000
         self.create_optimizer()
 

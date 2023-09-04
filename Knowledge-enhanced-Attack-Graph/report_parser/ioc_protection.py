@@ -4,6 +4,7 @@ import json
 import logging
 ############# ioc_replace()
 
+
 class IoCItem:          # original IoC item     # replaced IoC item
     ioc_string: str     # original IoC string   # replaced IoC string
     ioc_type: str       # IoC type
@@ -112,7 +113,7 @@ class IoCIdentifier:
             self.replaced_text += f"{replaced_word}"
 
             replaced_word_end = len(self.replaced_text)
-            replaced_word_start = replaced_word_end - len(replaced_word)  # -2 for two blank space
+            replaced_word_start = replaced_word_end - len(replaced_word)
             replaced_ioc_item = IoCItem(original_ioc_string, ioc_item.ioc_type, replaced_word_start, replaced_word_end)
             self.replaced_ioc_list.append(replaced_ioc_item)
             self.replaced_ioc_dict[replaced_word_start] = original_ioc_string
@@ -121,6 +122,8 @@ class IoCIdentifier:
             self.deleted_character_count += round_deleted_character_count
 
             text_block_start = ioc_item.ioc_location[1]
+
+            # Original version
 
             # original_ioc_string = ioc_item.ioc_string
             # replaced_word = self.ioc_replaceWord[ioc_item.ioc_type]
