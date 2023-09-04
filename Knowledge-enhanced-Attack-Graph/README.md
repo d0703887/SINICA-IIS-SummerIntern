@@ -8,6 +8,8 @@ python 3.8
 pip install -r requirements
 ```
 
+Spacy model's weight can be found at [here](https://drive.google.com/drive/folders/1zVGPpN-i-BLlpFqQERscFGb45PkhfkUm)
+
 **Run**
 
 Generating Technique Templates
@@ -20,7 +22,7 @@ Generating Attack Graph
 python daniel.py -M attackGraph -O ./output -R "Dataset/Evaluation/Frankenstein Campaign.txt" --edgeType parsing
 ```
 
-Identidying Mitre Att&ck Techniques
+Identidying Mitre Att&ck Techniques (**Technique Template must be generated first**)
 ```bash
 # -T and --techGenLevel has dependency
 # Make sure them are matched (i.e. technique templates at -T are generated in --techGenLevel level), or there will be error
