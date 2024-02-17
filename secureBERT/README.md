@@ -1,6 +1,6 @@
 # Fine-tuning SecureBERT on DNRTI dataset
 ## Goal
-This repository adapts SecureBERT on DNRTI dataset. You need to modify the dataset's path in utils.py to run the project.
+This repository adapts SecureBERT on DNRTI dataset. **You need to modify the dataset's path in utils.py to run the project.**
 
 ## Usage
 **Setup**
