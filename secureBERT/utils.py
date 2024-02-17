@@ -78,6 +78,8 @@ def tokenize_and_align_labels(sample, tokenizer, mode="train"):
 
 
 def DNRTI(file_type, tokenizer, mode="train"):
+    # TODO
+    # Your dataset's path 
     if file_type == "train":
         path = "../dataset/DNRTI/train.txt"
     elif file_type == "test":
