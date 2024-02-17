@@ -49,7 +49,7 @@ attackGraph_generating(input_text, srl_model, crf_model, output_path)
 
 ```
 
-```bibtext
+```bibtex
 @inproceedings{Otmazgin2022FcorefFA,
   title     = {F-coref: Fast, Accurate and Easy to Use Coreference Resolution},
   author    = {Shon Otmazgin and Arie Cattan and Yoav Goldberg},
