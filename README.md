@@ -6,7 +6,7 @@
 ## Example
 
 **CTI Report Example:**
->The threat actors **1) sent the trojanized Microsoft Word documents, probably via email**. Talos discovered a document named MinutesofMeeting-2May19.docx. Once **2) the victim opens the document, it fetches a remove template from the actor-controlled website, hxxp://droobox[.]online:8o/luncher.doc**. Once the luncher.doc was downloaded, **3) it used CVE-2017-11882, to execute code on the victim's machine**. After the exploit, the file would write a series of base64-encoded PowerShell commands that acted as a stager and **4) set up persistence by adding it to the HKCU\Software\Microsoft\Windows\CurrentVersion\Run Registry key**.
+>The threat actors *1) sent the trojanized Microsoft Word documents, probably via email*. Talos discovered a document named MinutesofMeeting-2May19.docx. Once *2) the victim opens the document, it fetches a remove template from the actor-controlled website, hxxp://droobox[.]online:8o/luncher.doc*. Once the luncher.doc was downloaded, *3) it used CVE-2017-11882, to execute code on the victim's machine*. After the exploit, the file would write a series of base64-encoded PowerShell commands that acted as a stager and *4) set up persistence by adding it to the HKCU\Software\Microsoft\Windows\CurrentVersion\Run Registry key*.
 
 **Extracted techniques:**
 1.  T1566: Phishing Email
