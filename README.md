@@ -16,13 +16,17 @@
 
 ## Method
 ### Pipeline
+
 <small>*This work is based on **[AttacKG: Constructing Knowledge-enhanced Attack Graphs from Cyber Threat Intelligence Reports](https://arxiv.org/abs/2111.07093)**.*</small>
-![image](https://hackmd.io/_uploads/S10j1v0Mlx.png)
+![image](https://github.com/user-attachments/assets/4bd89d0c-e0ca-4dde-9d11-1580c3cf0c29)
+
+---
 ### Entity Extraction (NER)
 Since CTI reports often contain domain-specific term and publicly available cybersecurity NER datasets are limited, existing NER model struggle to generalize to unseen terms and frequently produce false positive.
 
 To solve this, I leveraged Large Language Models (LLMs)—specifically ChatGPT4—to perform accurate NER. The massive pretraining corpus of LLMs provids them with inherent **cybersecurity domain knowledge** and enables them to to **generalize well to unseen terms** by understanding the context withint CTI reports.
 
+---
 ### Semantic Role Labeling
 Follow *[Extractor: Extracting Attack Behavior from Threat Reports](https://ieeexplore.ieee.org/document/9581182)*. Semantic Role Labeling provides more semantic relation between entities compared to Dependency Parsing.
 
@@ -44,7 +48,7 @@ For example:
                   ↙       ↘
 "Software\Microsoft.."   ".lnk shortcur file"
 ```
-
+---
 ### Technique Graph Templates
 MITRE ATT&CK provides procedure examples for each techniques. Technique Graph Templates (TG Templates) provides a rough template of how each techniques work in a knowledge graph, which later can be used in the graph matching to determine techniques used in the unseen CTI report.
 
@@ -80,7 +84,8 @@ This many-to-many mapping (technique -> TG Templates) is necessary because merin
 >If successful, the C2 would return a string of characters. Once the string was RC4 decrypted, it launched a PowerShell Empire agent. The PowerShell script would attempt to enumerate the host to look for certain information. Once the aforementioned information was obtained, it was sent back to the threat actor's C2.
 
 **Output Graph**:
-![image](https://hackmd.io/_uploads/SkfwH_Czgl.png)
+![image](https://github.com/user-attachments/assets/48ec99dc-202c-4987-b1a1-b41c5c250168)
+
 
 
 
