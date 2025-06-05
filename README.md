@@ -1,8 +1,3 @@
----
-title: Information Extraction on Cyber Threat Intelligence (CTI) Reports
-
----
-
 # Information Extraction on Cyber Threat Intelligence (CTI) Reports
 
 ## Intro
